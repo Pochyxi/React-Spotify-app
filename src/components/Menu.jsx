@@ -52,13 +52,19 @@ const Menu = () => {
                 <button
                     onClick={() => {
                         navigate('/')
-                    }} className="mb-3 homeMenuLink"><HomeIcon sx={{ fontSize: '2rem' }} color='gray' /></button>
+                    }} className="mb-3 homeMenuLink"><HomeIcon style={{
+                        boxShadow: location.pathname === '/' ? '0px 0px 10px green' : '0px 0px 10px transparent',
+                        borderRadius: '10px',
+                    }} sx={{ fontSize: '2rem' }} color='gray' /></button>
 
             </Col>
             <Col  >
                 <button onClick={() => {
                     navigate('/favourites')
-                }} className="homeMenuLink"><LocalLibraryIcon sx={{ fontSize: '2rem' }} /></button>
+                }} className="homeMenuLink"><LocalLibraryIcon style={{
+                    boxShadow: location.pathname === '/favourites' ? '0px 0px 10px green' : '0px 0px 10px transparent',
+                    borderRadius: '10px',
+                }} sx={{ fontSize: '2rem' }} /></button>
             </Col>
             {
                 location.pathname === '/' && (

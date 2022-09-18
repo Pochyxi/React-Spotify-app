@@ -179,11 +179,17 @@
   /* filter: brightness(70%); */
  }
  .artistArtistName {
-  /* filter: brightness(100%); */
+  display: inline-block;
+  max-width: 100%;
   color: white;
   text-shadow: 0px 0px 5px black;
   font-size: 5rem;
   font-weight: 800;
+ }
+ @media screen and (max-width: 520px) {
+   .artistArtistName {
+     font-size: 3rem;
+   }
  }
  .artistArtistFollowers {
   color: white;

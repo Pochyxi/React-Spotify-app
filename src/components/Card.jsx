@@ -16,7 +16,6 @@ export default function ActionAreaCard(props) {
     const checkFavourites = (arr) => {
         return arr.some((item) => item.id === props.card.id)
     }
-    const [check, setCheck] = useState(checkFavourites(favourites))
 
     const navigate = useNavigate()
 
