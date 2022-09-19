@@ -14,27 +14,44 @@ const Library = () => {
 
     return (
         <Container fluid className="MyHome text-light text-start pb-5 mb-5">
-            <Row>
-                <Col
-                    xs={12}
-                    className='p-3 coverArtist d-flex flex-column justify-content-end'
-                    style={{ backgroundImage: 'url(' + choseImg(favourites).album.cover_xl + ')' }}>
-                </Col>
-                <Menu />
-            </Row>
-            <Row className="py-5">
-                <h1>Your Favourite music</h1>
-                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-5 text-light'>
+            {
+                favourites.length > 0 ? (
+                    <Row>
+                        <Col
+                            xs={12}
+                            className='p-3 coverArtist d-flex flex-column justify-content-end'
+                            style={{ backgroundImage: 'url(' + choseImg(favourites).album.cover_xl + ')' }}>
+                        </Col>
+                        <Menu />
+                    </Row>
+                ) : (
+                    <Row className="text-center text-danger pt-5">
+                        <Col>
+                            <h2>Nothing to see</h2>
+                        </Col>
+                        <Menu />
+                    </Row>
+                )
+            }
+            {
+                favourites.length > 0 && (
+                    <Row className="py-5">
+                        <h1>Your Favourite music</h1>
+                        <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-0 pe-md-5 text-light'>
 
-                    {
-                        favourites.map(card => (
-                            <Col key={card.id} xs={6} md={6} lg={4} xxl={3} >
-                                <ActionAreaCard card={card} />
-                            </Col>
-                        ))
-                    }
-                </Col>
-            </Row>
+                            {
+                                favourites.map(card => (
+                                    <Col key={card.id} xs={6} md={6} lg={4} xxl={3} >
+                                        <ActionAreaCard card={card} />
+                                    </Col>
+                                ))
+                            }
+                        </Col>
+                    </Row>
+                )
+            }
+
+
         </Container >
     )
 }

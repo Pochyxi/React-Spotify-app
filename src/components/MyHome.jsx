@@ -278,7 +278,7 @@ const MyHome = () => {
                 musicContent.length > 0 && (
                     <Row className="mb-5 mt-5">
                         <h1>Results</h1>
-                        <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-5 text-light'>
+                        <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start text-light'>
 
                             {
                                 musicContent.map(card => (
@@ -297,7 +297,7 @@ const MyHome = () => {
 
             <Row className="mb-5 mt-5">
                 <h1>Rock Classics</h1>
-                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-md-5 text-light'>
+                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start text-light'>
 
                     {
                         stabilityCheck() && (
@@ -313,7 +313,7 @@ const MyHome = () => {
             </Row>
             <Row className="mb-5 mt-5">
                 <h1>Pop Culture</h1>
-                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-md-5 text-light'>
+                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start  text-light'>
                     {
                         stabilityCheck() && (
                             generatorSections(pop).map(card => (
@@ -328,7 +328,7 @@ const MyHome = () => {
             </Row>
             <Row className="mb-5 mt-5">
                 <h1>#HipHop</h1>
-                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-md-5 text-light'>
+                <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start text-light'>
                     {
                         stabilityCheck() && (
                             generatorSections(hipHop).map((card) => (

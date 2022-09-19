@@ -31,12 +31,12 @@ export default function ActionAreaCard(props) {
     return (
         <Col className='p-3 text-center m-2'>
             <Row
-                onMouseEnter={() => setToggleGad(true)}
-                onMouseLeave={() => setToggleGad(false)}
+                onMouseEnter={() => setTimeout(() => { setToggleGad(true) }, 100)}
+                onMouseLeave={() => setTimeout(() => { setToggleGad(false) }, 300)}
                 style={{
                     boxShadow: checkFavourites(favourites) ? '2px 2px 20px green' : '2px 2px 20px black'
                 }}
-                className='d-flex flex-column justify-content-between align-items-center cardMusic p-1' >
+                className='d-flex flex-column justify-content-between align-items-center cardMusic p-1 pt-2' >
                 {
                     toggleGad && (
                         <Col className='d-flex justify-content-end' xs={12}>
@@ -60,32 +60,33 @@ export default function ActionAreaCard(props) {
                         </Col>
                     )
                 }
-
-                <CardMedia
-                    className='imgCard'
-                    component="img"
-                    image={props.card.album.cover_xl}
-                    alt="green iguana"
-                    sx={{
-                        maxWidth: '300px',
-                        marginBottom: '10px',
-                        paddingTop: '10px',
-                    }}
-                />
                 <Col>
-
-                    <Row>
-                        <button onClick={() => navigate('/album/' + props.card.album.id)} className='m-0 mb-1 textCard p-0'>Album: {cutString(props.card.album.title)}</button>
-                        <button onClick={() => navigate('/artist/' + props.card.artist.id)} className='m-0 textCard text-center p-0'>Artist: {props.card.artist.name}</button>
-
-                    </Row>
-
+                    <CardMedia
+                        className='imgCard'
+                        component="img"
+                        image={props.card.album.cover_xl}
+                        alt="green iguana"
+                        sx={{
+                            maxWidth: '300px',
+                            marginBottom: '10px',
+                        }}
+                    />
                 </Col>
-                <Col>
-                    <p className='m-0 textCard2 text-center pb-1'>Song: {props.card.title}</p>
+
+                {
+                    toggleGad && (
+                        <Col className='d-flex flex-column justify-content-between'>
+                            <button onClick={() => navigate('/album/' + props.card.album.id)} className='m-0 my-3 textCard p-0'>Album: {cutString(props.card.album.title)}</button>
+                            <button onClick={() => navigate('/artist/' + props.card.artist.id)} className='m-0 my-3 textCard text-center p-0'>Artist: {props.card.artist.name}</button>
+                        </Col>
+                    )
+                }
+
+                <Col className='d-flex flex-column justify-content-end'>
+                    <p className='m-0 textCard2 text-center my-3'>Song: {props.card.title}</p>
                     {
                         toggleGad && (
-                            <Col xs={6} >
+                            <Col className='mt-2 d-flex justify-content-center' xs={12} >
                                 <button
                                     className='playButton'
                                     onClick={() => {

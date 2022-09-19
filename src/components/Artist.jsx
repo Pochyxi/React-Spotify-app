@@ -99,7 +99,7 @@ const Artist = () => {
                             tracks.length > 0 && (
                                 <Row className="py-5">
                                     <h1>Top tracks</h1>
-                                    <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start pe-5 text-light'>
+                                    <Col xs={12} className='text-secondary d-flex mySection flex-wrap justify-content-start text-light'>
 
                                         {
                                             filterTracks(tracks).map(card => (

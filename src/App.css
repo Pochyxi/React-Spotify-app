@@ -102,11 +102,16 @@
     height: 40px;
   }
   .cardMusic {
-    max-width: 250px;
+    max-width: 300px;
     min-height: 400px;
     background-color: rgb(46, 46, 46);
     /* box-shadow: 2px 2px 20px black; */
     border-radius: 10px;
+  }
+  @media screen and (max-width: 500px) {
+    .cardMusic {
+      min-height: 300px;
+    }
   }
   .cardMusic:hover {
     background-color: rgb(70, 70, 70);
@@ -201,3 +206,6 @@
    background-color: transparent;
    border: none;
  }
+.imgCard {
+  border-radius: 20px!important;
+}
