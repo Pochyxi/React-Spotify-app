@@ -110,7 +110,7 @@
   }
   @media screen and (max-width: 500px) {
     .cardMusic {
-      min-height: 300px;
+      min-height: 400px;
     }
   }
   .cardMusic:hover {
@@ -237,7 +237,7 @@
    }
    .makeAbsolute {
     position: absolute;
-    top: 25%;
+    top: 30%;
   }
   .makeAbsolute2 {
     position: absolute;
