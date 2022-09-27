@@ -120,15 +120,19 @@
     display: flex;
     border-radius: 50%;
     background-color: transparent;
+    border: none;
     align-items: center;
     padding: 0;
     width: auto;
     font-size: 2rem;
     color: rgb(60, 211, 60);
   }
-  .playButton:hover {
-    color:white;
-    border-color:rgb(60, 211, 60);
+  .playIcon {
+    transform: scale(2.5);
+  }
+  .playIcon:hover {
+    box-shadow: 0px 10px 10px rgb(60, 211, 60);
+    border-radius: 50%;
   }
  .playerMusic {
    position: fixed!important;
@@ -191,11 +195,7 @@
   font-size: 5rem;
   font-weight: 800;
  }
- @media screen and (max-width: 520px) {
-   .artistArtistName {
-     font-size: 3rem;
-   }
- }
+
  .artistArtistFollowers {
   color: white;
   text-shadow: 1px 1px 15px black;
@@ -206,6 +206,57 @@
    background-color: transparent;
    border: none;
  }
+ 
+ .favouriteHeart {
+   box-shadow: 2px 2px 2px black;
+   border-radius: 50%;
+  transform: scale(2.5);
+}
+.favouriteHeart:hover {
+  box-shadow: -2px -2px 2px black;
+  border-radius: 80%;
+}
 .imgCard {
   border-radius: 20px!important;
 }
+
+.makeRelative {
+  position: relative;
+}
+.makeAbsolute {
+  position: absolute;
+  top: 40%;
+}
+.makeAbsolute2 {
+  position: absolute;
+  top: 25%;
+}
+ @media screen and (max-width: 520px) {
+   .artistArtistName {
+     font-size: 3rem;
+   }
+   .makeAbsolute {
+    position: absolute;
+    top: 25%;
+  }
+  .makeAbsolute2 {
+    position: absolute;
+    top: 10%;
+  }
+ }
+ .zoomAnimation {
+  animation-name: zoom;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+ }
+
+ @keyframes zoom {
+   from{
+     transform: scale(1);
+     opacity: .1;
+   }
+   to{
+     transform: scale(2.5);
+     opacity: 1;
+   }
+ }

@@ -10,7 +10,8 @@ import { useState } from 'react';
 
 export default function ActionAreaCard(props) {
     const favourites = useSelector(state => state.favorites.favorites)
-    const [toggleGad, setToggleGad] = useState(false)
+    const [aniHeart, setAniHeart] = useState("favouriteHeart text-danger d-none")
+    const [aniPlay, setAniPlay] = useState('playIcon d-none')
 
 
     const checkFavourites = (arr) => {
@@ -29,36 +30,33 @@ export default function ActionAreaCard(props) {
         return stringCutted.join('');
     }
     return (
-        <Col className='p-3 text-center m-2'>
+        <Col className='p-3 text-center m-2 makeRelative'>
             <Row
-                onMouseEnter={() => setTimeout(() => { setToggleGad(true) }, 100)}
-                onMouseLeave={() => setTimeout(() => { setToggleGad(false) }, 300)}
+                onMouseEnter={() => {
+                    setAniHeart("favouriteHeart text-danger zoomAnimation")
+                    setAniPlay("zoomAnimation")
+                    setTimeout(() => {
+                        setAniHeart("favouriteHeart text-danger")
+                        setAniPlay("playIcon")
+                    }, 400)
+                }}
+                onMouseLeave={() => {
+                    setTimeout(() => {
+                        setAniHeart("favouriteHeart text-danger d-none")
+                        setAniPlay("playIcon d-none")
+                    }, 500)
+
+
+
+                }}
                 style={{
                     boxShadow: checkFavourites(favourites) ? '2px 2px 20px green' : '2px 2px 20px black'
                 }}
                 className='d-flex flex-column justify-content-between align-items-center cardMusic p-1 pt-2' >
                 {
-                    toggleGad && (
-                        <Col className='d-flex justify-content-end' xs={12}>
-                            <button
-                                onClick={() => {
-                                    if (checkFavourites(favourites)) {
-                                        dispatch(removeFavourites(props.card))
-                                    } else {
-                                        dispatch(addFavourites(props.card))
-                                    }
 
-                                }}
-                                className='favouriteIcon'>
-                                {
-                                    checkFavourites(favourites) ? (
-                                        <FavoriteIcon className='favouriteHeart text-danger' />
-                                    ) : <FavoriteBorderIcon className='favouriteHeart text-danger' />
-                                }
 
-                            </button>
-                        </Col>
-                    )
+
                 }
                 <Col>
                     <CardMedia
@@ -73,30 +71,45 @@ export default function ActionAreaCard(props) {
                     />
                 </Col>
 
-                {
-                    toggleGad && (
-                        <Col className='d-flex flex-column justify-content-between'>
-                            <button onClick={() => navigate('/album/' + props.card.album.id)} className='m-0 my-3 textCard p-0'>Album: {cutString(props.card.album.title)}</button>
-                            <button onClick={() => navigate('/artist/' + props.card.artist.id)} className='m-0 my-3 textCard text-center p-0'>Artist: {props.card.artist.name}</button>
-                        </Col>
-                    )
-                }
+                <Col className='d-flex flex-column justify-content-between'>
+                    <button onClick={() => navigate('/album/' + props.card.album.id)} className='m-0 my-3 textCard p-0'>Album: {cutString(props.card.album.title)}</button>
+                    <button onClick={() => navigate('/artist/' + props.card.artist.id)} className='m-0 my-3 textCard text-center p-0'>Artist: {props.card.artist.name}</button>
+                </Col>
+
 
                 <Col className='d-flex flex-column justify-content-end'>
                     <p className='m-0 textCard2 text-center my-3'>Song: {props.card.title}</p>
-                    {
-                        toggleGad && (
-                            <Col className='mt-2 d-flex justify-content-center' xs={12} >
-                                <button
-                                    className='playButton'
-                                    onClick={() => {
-                                        dispatch(addPlayer(props.card))
-                                    }}>
-                                    <AiFillPlayCircle />
-                                </button>
-                            </Col>
-                        )
-                    }
+
+                </Col>
+                <Col className='makeAbsolute'>
+                    <Col className='mt-2 d-flex justify-content-center' xs={12} >
+                        <button
+                            className='playButton'
+                            onClick={() => {
+                                dispatch(addPlayer(props.card))
+                            }}>
+                            <AiFillPlayCircle className={aniPlay} />
+                        </button>
+                    </Col>
+                </Col>
+                <Col className='makeAbsolute2' xs={12}>
+                    <button
+                        onClick={() => {
+                            if (checkFavourites(favourites)) {
+                                dispatch(removeFavourites(props.card))
+                            } else {
+                                dispatch(addFavourites(props.card))
+                            }
+
+                        }}
+                        className='favouriteIcon'>
+                        {
+                            checkFavourites(favourites) ? (
+                                <FavoriteIcon className={aniHeart} />
+                            ) : <FavoriteBorderIcon className={aniHeart} />
+                        }
+
+                    </button>
                 </Col>
 
 
